@@ -1,6 +1,6 @@
 # Factorio Narrator
 
-Accessibility mod that logs what the player hovers over (and related UI events) to Factorio's `script-output` so an external screen reader or TTS can speak it.
+Accessibility mod that logs what you hover over (and related UI events) to Factorio's `script-output` for a screen reader or TTS.
 
 ## What it does
 
@@ -16,32 +16,12 @@ Accessibility mod that logs what the player hovers over (and related UI events) 
 
 ## How to use
 
-1. Install the mod and start the game.
-2. Point your cursor at entities to get automatic hover logs.
-3. To narrate inventory items, hover the item and press the custom input (default: `CONTROL`).
+1. Install the narrator requirements, then run the narrator script:
+   - `pip install -r requirements.txt`
+   - `python narrator.py`
+2. Run Factorio and enable the mod.
+3. Point your cursor at entities to get automatic hover logs.
+4. To narrate inventory items, hover the item and press the custom input (default: `CONTROL`).
    - You can change this in Factorio's controls menu under the mod's input name.
-4. Read the log file from:
+5. Output file (also what the narrator speaks):
    - `%APPDATA%\Factorio\script-output\factorio-narrator\factorio-narrator-output.txt`
-
-## Narration (Windows)
-
-This repo includes `narrator.py`, a Windows-only SAPI speaker that tails the output file.
-You must run this script to hear narrations.
-
-Requirements:
-- Python 3
-- `comtypes` package (see `requirements.txt`)
-
-Run:
-
-```powershell
-pip install -r requirements.txt
-```
-
-Then:
-
-```powershell
-python narrator.py
-```
-
-This will read new lines from the output file and speak them aloud.
