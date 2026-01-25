@@ -6,26 +6,39 @@ Accessibility mod that logs what the player hovers over (and related UI events) 
 
 - Logs the currently selected/hovered entity (or "terrain" when nothing is selected).
 - Logs when a GUI is opened.
-- Provides a custom input to read the hovered prototype on demand.
+- Provides a custom input to read the hovered item on demand.
+
+## Installation
+
+1. Clone this repo into your Factorio mods folder:
+   - `%APPDATA%\Factorio\mods\factorio-narrator`
+2. Start Factorio and enable the mod.
 
 ## How to use
 
 1. Install the mod and start the game.
 2. Point your cursor at entities to get automatic hover logs.
-3. Press the custom input (default: `CONTROL`) to read the hovered prototype.
+3. To narrate inventory items, hover the item and press the custom input (default: `CONTROL`).
    - You can change this in Factorio's controls menu under the mod's input name.
 4. Read the log file from:
    - `%APPDATA%\Factorio\script-output\factorio-narrator\factorio-narrator-output.txt`
 
-## Optional narrator script (Windows)
+## Narration (Windows)
 
-This repo includes `narrator.py`, a simple Windows SAPI speaker that tails the output file.
+This repo includes `narrator.py`, a Windows-only SAPI speaker that tails the output file.
+You must run this script to hear narrations.
 
 Requirements:
 - Python 3
-- `comtypes` package
+- `comtypes` package (see `requirements.txt`)
 
 Run:
+
+```powershell
+pip install -r requirements.txt
+```
+
+Then:
 
 ```powershell
 python narrator.py
