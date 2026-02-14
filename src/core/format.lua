@@ -63,6 +63,32 @@ local function inserter_move_phrase(entity, proto)
 	return type_name
 end
 
+local function pretty_amount(n)
+	if type(n) ~= "number" then return nil end
+	local v = math.floor(n + 0.5)
+	if v >= 1000000 then
+		local m = string.format("%.1f", v / 1000000):gsub("%.0$", "")
+		return m .. "M"
+	end
+	if v >= 1000 then
+		local k = string.format("%.1f", v / 1000):gsub("%.0$", "")
+		return k .. "k"
+	end
+	return tostring(v)
+end
+
+local function resource_amount_phrase(entity, proto)
+	local t = (proto and proto.type) or (entity and entity.type)
+	if t ~= "resource" then return nil end
+	local ok, amount = pcall(function()
+		return entity.amount
+	end)
+	if not ok then return nil end
+	local shown = pretty_amount(amount)
+	if not shown then return nil end
+	return shown .. " remaining"
+end
+
 function Format.truncate(text, max_len)
 	if not text then return "" end
 	if not max_len or #text <= max_len then return text end
@@ -84,6 +110,10 @@ function Format.entity_label(entity)
 	local kind = entity_kind(entity, is_ghost)
 	local name = entity_display_name(entity, proto)
 	local base = merge_kind_and_name(kind, name)
+	local resource_amount = resource_amount_phrase(entity, proto)
+	if resource_amount then
+		base = string.format("%s %s", base, resource_amount)
+	end
 
 	local dir_phrase = EntityDirection.describe_direction(entity)
 	if dir_phrase then

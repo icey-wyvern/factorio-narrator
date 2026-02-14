@@ -3,6 +3,9 @@ local C = {}
 C.OUTPUT_PATH = "factorio-narrator/factorio-narrator-output.txt"
 C.APPEND_LINES = true
 C.MAX_LINE_LEN = 300
+C.MAX_FILTER_SUMMARY = 4
+C.LOG_MAX_BYTES = 10240
+C.LOG_MAINTENANCE_INTERVAL_TICKS = 18000
 
 -- After a GUI opens, suppress world selection chatter for a few ticks
 C.SELECTION_AFTER_GUI_TICKS = 10

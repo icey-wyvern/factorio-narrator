@@ -6,7 +6,8 @@ Accessibility mod that logs what you hover over (and related UI events) to Facto
 
 - Logs the currently selected/hovered entity (or "terrain" when nothing is selected).
 - Logs when a GUI is opened.
-- Provides a custom input to read the hovered item on demand.
+- Provides a keybind to read the hovered item/prototype.
+- Trims the output log automatically if it grows beyond 10 KB (checked every ~5 minutes).
 
 ## Installation
 
@@ -21,7 +22,7 @@ Accessibility mod that logs what you hover over (and related UI events) to Facto
    - `python narrator.py`
 2. Run Factorio and enable the mod.
 3. Point your cursor at entities to get automatic hover logs.
-4. To narrate inventory items, hover the item and press the custom input (default: `CONTROL`).
+4. Press `1` to read the currently hovered item/prototype (inventory, recipe icons, filter selectors, etc.).
    - You can change this in Factorio's controls menu under the mod's input name.
 5. Output file (also what the narrator speaks):
    - `%APPDATA%\Factorio\script-output\factorio-narrator\factorio-narrator-output.txt`

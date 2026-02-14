@@ -3,9 +3,8 @@ data:extend({
   {
     type = "custom-input",
     name = "factorio-narrator-read-hovered",
-    key_sequence = "CONTROL", -- default: left ctrl
+    key_sequence = "1",
     action = "lua",
-    -- consuming defaults to "none" (valid values: "none" or "game-only")
     include_selected_prototype = true,
     order = "a[narrator]-a[read-hovered]",
   },
